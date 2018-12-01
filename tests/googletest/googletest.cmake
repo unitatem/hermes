@@ -1,6 +1,7 @@
 # the following code to fetch googletest is inspired by and adapted after:
 # https://crascit.com/2015/07/25/cmake-gtest/
 # https://github.com/bast/gtest-demo
+# https://github.com/abseil/googletest/blob/master/googletest/README.md
 
 macro(fetch_googletest _googletest_root)
     set(GOOGLETEST_ROOT ${_googletest_root})
@@ -20,9 +21,8 @@ macro(fetch_googletest _googletest_root)
             WORKING_DIRECTORY ${_googletest_root}
     )
 
-    # adds the targers: gtest, gtest_main, gmock, gmock_main
     add_subdirectory(
-            ${_googletest_root}/src
-            ${_googletest_root}/build
+            ${_googletest_root}/googletest-src
+            ${_googletest_root}/googletest-build
     )
 endmacro()
