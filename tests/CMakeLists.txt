@@ -4,17 +4,17 @@ include(googletest/googletest.cmake)
 fetch_googletest(${PROJECT_BINARY_DIR}/googletest)
 
 add_executable(
-        dedal_tests
+        mwe_googletest_tests
         my_math_tests.cpp
 )
 
 target_link_libraries(
-        dedal_tests
+        mwe_googletest_tests
         gtest_main
-        dedal_core
+        mwe_googletest_math
 )
 
 add_test(
-        NAME dedal_tests
-        COMMAND ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/dedal_tests
+        NAME mwe_googletest_tests
+        COMMAND ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/mwe_googletest_tests
 )

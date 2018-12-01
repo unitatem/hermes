@@ -1,12 +1,12 @@
-add_library(dedal_core "")
+add_library(mwe_googletest_math "")
 
 target_sources(
-        dedal_core
+        mwe_googletest_math
         PRIVATE my_math.cpp
         PUBLIC ${CMAKE_CURRENT_LIST_DIR}/my_math.h
 )
 
 target_include_directories(
-        dedal_core
+        mwe_googletest_math
         PUBLIC ${CMAKE_CURRENT_LIST_DIR}
 )

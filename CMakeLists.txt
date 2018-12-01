@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
-project(dedal)
+project(mwe_googletest)
 
 set(CMAKE_CXX_STANDARD 17)
 
 option(TESTS "enable/disable tests" ON)
 
-add_executable(dedal src/main.cpp)
+add_executable(mwe_googletest src/main.cpp)
 add_subdirectory(src)
-target_link_libraries(dedal
-        dedal_core
+target_link_libraries(mwe_googletest
+        mwe_googletest_math
         )
 
 if (TESTS)
