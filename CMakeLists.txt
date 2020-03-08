@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(mwe_googletest)
+project(googletest_mvp
 
 set(CMAKE_CXX_STANDARD 17)
 

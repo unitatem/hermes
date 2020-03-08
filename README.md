@@ -1,4 +1,4 @@
-# mwe-googletest
+# googletest-mvp
 Minimal working example for including googletest in project
 
 # References
