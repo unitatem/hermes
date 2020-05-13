@@ -1,6 +1,20 @@
 #include "page_mock.hpp"
 
+#include "../src/page.hpp"
+
+static PageMock* mock_impl;
+
+PageMock::PageMock()
+{
+    mock_impl = this;
+}
+
+PageMock::~PageMock()
+{
+    mock_impl = nullptr;
+}
+
 void Page::refresh()
 {
-    std::cout << "(interceptor) Page::refresh()" << std::endl;
+    mock_impl->refresh();
 }

@@ -3,15 +3,13 @@
 
 #include "gmock/gmock.h"
 
-// #include "../src/page.hpp"
-#include <iostream>
-
-class Page
+class PageMock
 {
 public:
-    void refresh();
-    // MOCK_METHOD0(refresh, void());
+    PageMock();
+    ~PageMock();
+
+    MOCK_METHOD0(refresh, void());
 };
-using PageMock = Page;
 
 #endif // PAGE_MOCK_HPP_
