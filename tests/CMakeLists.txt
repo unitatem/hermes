@@ -4,11 +4,11 @@ include(googletest/googletest.cmake)
 fetch_googletest(${PROJECT_BINARY_DIR}/googletest)
 
 add_executable(book_test
-    book_test.cpp
-    ../src/book.cpp)
+    book_test.cpp)
 target_link_libraries(book_test
     gtest
     gmock_main
+    Book
     PageMock)
 
 add_library(PageMock SHARED
