@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(googletest_mvp)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 option(TESTS "enable/disable tests" ON)
 
