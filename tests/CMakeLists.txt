@@ -1,5 +1,9 @@
 enable_testing()
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${${PROJECT_NAME}_SOURCE_DIR}/bin/tests)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${${PROJECT_NAME}_SOURCE_DIR}/bin/tests)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_SOURCE_DIR}/bin/tests)
+
 include(googletest/googletest.cmake)
 fetch_googletest(${PROJECT_BINARY_DIR}/googletest)
 
