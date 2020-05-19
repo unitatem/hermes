@@ -6,6 +6,16 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 option(TESTS "enable/disable tests" ON)
 
+add_compile_options(
+    -Wall
+    -Wextra
+    -Werror
+    -Wshadow
+    -Wnon-virtual-dtor
+    -pedantic
+    )
+
+include_directories(include)
 add_subdirectory(src)
 
 if (TESTS)
