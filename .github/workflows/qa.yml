@@ -2,7 +2,7 @@ name: Q&A
 
 on:
   push:
-    branches: [ actions ]
+    branches: [ master ]
 
 jobs:
   test:
