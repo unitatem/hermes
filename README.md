@@ -1,4 +1,4 @@
-![Q&A](https://github.com/unitatem/hermes/workflows/Q&A/badge.svg)
+![Q&A](https://github.com/unitatem/hermes/workflows/Q&A/badge.svg?branch=master)
 
 # Hermes
 Project for exploration of random programming ideas.
