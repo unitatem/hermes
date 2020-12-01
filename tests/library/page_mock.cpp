@@ -1,6 +1,6 @@
 #include "page_mock.hpp"
 
-#include "../src/page.hpp"
+#include "../../src/library/page.hpp"
 
 static PageMock* mock_impl;
 

@@ -4,7 +4,7 @@
 #include "page_mock.hpp"
 #include <iostream>
 
-#include "../src/book.hpp"
+#include "../../src/library/book.hpp"
 
 using ::testing::Invoke;
 
