@@ -2,6 +2,7 @@
 #include "gmock/gmock.h"
 
 #include <iostream>
+#include <vector>
 
 class CityNode;
 class TownNode;
@@ -9,10 +10,12 @@ class TownNode;
 class Visitor
 {
 public:
+    std::string report;
+
     virtual ~Visitor() = default;
 
-    virtual void visit(const CityNode& e) = 0;
-    virtual void visit(const TownNode& e) = 0;
+    virtual void visit(const CityNode&) {}
+    virtual void visit(const TownNode&) {}
 };
 
 class Node
@@ -47,27 +50,55 @@ public:
 };
 const std::string TownNode::name = "TownNode";
 
-class ReportVisitor : public Visitor
+class XmlReportVisitor : public Visitor
 {
 public:
     void visit(const CityNode& node) override
     {
-        std::cout << "CityNode: " << node.name << std::endl;
+        report += "XmlReportVisitor > " + node.name + "\n";
     }
 
     void visit(const TownNode& node) override
     {
-        std::cout << "TownNode: " << node.name << std::endl;
+        report += "XmlReportVisitor > " + node.name + "\n";
     }
 };
 
-TEST(test, success)
+class JsonReportVisitor : public Visitor
 {
+public:
+    void visit(const CityNode& node) override
+    {
+        report += "JsonReportVisitor > " + node.name + "\n";
+    }
+
+    void visit(const TownNode& node) override
+    {
+        report += "JsonReportVisitor > " + node.name + "\n";
+    }
+};
+
+TEST(visitor, good_weather)
+{
+    // Given
     CityNode city_node;
     TownNode town_node;
+    std::vector<std::reference_wrapper<Node>> nodes = { city_node, town_node };
 
-    ReportVisitor report_visitor;
+    XmlReportVisitor xml_report_visitor;
+    JsonReportVisitor json_report_visitor;
+    std::vector<std::reference_wrapper<Visitor>> visitors = { xml_report_visitor, json_report_visitor };
 
-    city_node.accept(report_visitor);
-    town_node.accept(report_visitor);
+    // When
+    for (const auto& visitor : visitors)
+    {
+        for (const auto& node : nodes)
+        {
+            node.get().accept(visitor.get());
+        }
+    }
+
+    // Then
+    EXPECT_EQ(visitors[0].get().report, "XmlReportVisitor > CityNode\nXmlReportVisitor > TownNode\n");
+    EXPECT_EQ(visitors[1].get().report, "JsonReportVisitor > CityNode\nJsonReportVisitor > TownNode\n");
 }
