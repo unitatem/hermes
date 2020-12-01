@@ -22,3 +22,5 @@ target_link_libraries(PageMock
 
 add_library(PageFake SHARED
     page_fake.cpp)
+
+add_subdirectory(visitor)
