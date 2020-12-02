@@ -78,7 +78,7 @@ public:
     }
 };
 
-TEST(visitor, good_weather)
+TEST(VisitorTest, good_weather)
 {
     // Given
     CityNode city_node;

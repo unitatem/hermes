@@ -8,12 +8,14 @@
 
 using ::testing::Invoke;
 
-TEST(test, success)
+TEST(LibraryTest, good_weather)
 {
+    //Given
     PageMock page_mock;
     EXPECT_CALL(page_mock, refresh())
         .WillOnce(Invoke([](){ std::cout << "PageMock::refresh()" << std::endl; }));
 
+    // When
     Book book;
     book.refresh();
 }

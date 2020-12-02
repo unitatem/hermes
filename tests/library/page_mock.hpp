@@ -9,7 +9,7 @@ public:
     PageMock();
     ~PageMock();
 
-    MOCK_METHOD0(refresh, void());
+    MOCK_METHOD(void, refresh, ());
 };
 
 #endif // PAGE_MOCK_HPP_

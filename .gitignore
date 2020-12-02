@@ -8,3 +8,5 @@ cmake-build-debug
 # VS Code
 .vscode/
 
+core
+

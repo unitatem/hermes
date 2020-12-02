@@ -2,7 +2,7 @@
 
 #include "../../src/library/page.hpp"
 
-static PageMock* mock_impl;
+static PageMock* mock_impl = nullptr;
 
 PageMock::PageMock()
 {
