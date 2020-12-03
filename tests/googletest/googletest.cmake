@@ -6,7 +6,7 @@
 macro(fetch_googletest _googletest_root)
     set(GOOGLETEST_ROOT ${_googletest_root})
     configure_file(
-            ${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest-download.cmake
+            ${CMAKE_CURRENT_SOURCE_DIR}/googletest-download.cmake
             ${_googletest_root}/CMakeLists.txt
             @ONLY
     )
