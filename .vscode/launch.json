@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C++: g++: Debug",
+            "name": "C++: gdb: Launch",
             "type": "cppdbg",
             "request": "launch",
             // pre task
-            "preLaunchTask": "C++: g++: Build",
+            "preLaunchTask": "C++: Build",
             // target
             "program": "${workspaceFolder}/${input:path_to_target}",
             "args": [],
@@ -27,7 +27,25 @@
             ],
             "stopAtEntry": false,
             "externalConsole": false
-        }
+        },
+        {
+            "name": "C++: gdb: Attach",
+            "type": "cppdbg",
+            "request": "attach",
+            // target
+            "program": "${workspaceFolder}/${input:path_to_target}",
+            "processId": "${command:pickProcess}",
+            // debuger settings
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
     ],
     "inputs": [
         {

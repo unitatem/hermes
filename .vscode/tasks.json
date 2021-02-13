@@ -1,7 +1,7 @@
 {
     "tasks": [
         {
-            "label": "C++: g++: Build",
+            "label": "C++: Build",
             "type": "shell",
             "group": {
                 "kind": "build",
