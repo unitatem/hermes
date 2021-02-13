@@ -3,12 +3,17 @@
 # Hermes
 Project for exploration of random programming ideas.
 
-# References and content
-## cmake
-## googletest
+# References
+## GitHub Actions
+- Run actions locally
+  https://github.com/nektos/act
+
+## Google Test
 - https://github.com/abseil/googletest/blob/master/googletest/README.md
 - https://github.com/bast/gtest-demo/blob/master/README.md
 
-## GitHub Actions
-- Run actions locally  
-  https://github.com/nektos/act
+## Visual Studio Code
+- Tasks
+  https://code.visualstudio.com/docs/editor/tasks
+- Debugging
+  https://code.visualstudio.com/docs/editor/debugging
