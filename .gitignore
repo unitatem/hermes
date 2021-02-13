@@ -8,6 +8,7 @@ cmake-build-debug
 # VS Code
 .vscode/*
 !.vscode/launch.json
+!.vscode/tasks.json
 
 core
 

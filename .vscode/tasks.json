@@ -1,0 +1,17 @@
+{
+    "tasks": [
+        {
+            "label": "C++: g++: Build",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "${workspaceFolder}/tools/build.sh",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
