@@ -22,5 +22,6 @@ include_directories(include)
 add_subdirectory(src)
 
 if (TESTS)
+    add_subdirectory(tests_libs)
     add_subdirectory(tests)
 endif ()
