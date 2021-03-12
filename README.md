@@ -4,6 +4,10 @@
 Project for exploration of random programming ideas.
 
 # References
+## BEnchmark
+- A microbenchmark support library
+  https://github.com/google/benchmark
+
 ## GitHub Actions
 - Run actions locally
   https://github.com/nektos/act
