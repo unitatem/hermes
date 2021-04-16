@@ -5,6 +5,8 @@ class Book
 {
 public:
     void refresh();
+
+    int insert();
 };
 
 #endif // BOOK_HPP_

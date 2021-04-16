@@ -18,3 +18,8 @@ void Page::refresh()
 {
     mock_impl->refresh();
 }
+
+int Page::insert(void *type, void *secret_p)
+{
+    return mock_impl->insert(type, secret_p);
+}

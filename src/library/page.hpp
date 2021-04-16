@@ -5,6 +5,8 @@ class Page
 {
 public:
     void refresh();
+
+    int insert(void *type, void *object);
 };
 
 #endif // PAGE_HPP_

@@ -10,6 +10,7 @@ public:
     ~PageMock();
 
     MOCK_METHOD(void, refresh, ());
+    MOCK_METHOD(int, insert, (void*, void*));
 };
 
 #endif // PAGE_MOCK_HPP_
