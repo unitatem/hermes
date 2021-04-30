@@ -8,4 +8,5 @@ set -e
 bin/containers_benchmark/tests/vector_benchmark
 
 bin/library/tests/book_test
+bin/library/tests/matcher_test
 bin/visitor/tests/visitor_test

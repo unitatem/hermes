@@ -11,6 +11,13 @@ target_link_libraries(book_test
     PageMock)
 gtest_discover_tests(book_test)
 
+add_executable(matcher_test
+    matcher_test.cpp)
+target_link_libraries(matcher_test
+    gtest
+    gmock_main)
+gtest_discover_tests(matcher_test)
+
 add_library(PageMock SHARED
     page_mock.cpp)
 target_link_libraries(PageMock
