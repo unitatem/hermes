@@ -1,6 +1,5 @@
 #include "book.hpp"
 
-#include "page.hpp"
 #include <iostream>
 
 void Book::refresh()
