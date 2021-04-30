@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 #include "../../src/library/book.hpp"
@@ -12,6 +13,7 @@ using ::testing::ContainerEq;
 using ::testing::Eq;
 using ::testing::ExplainMatchResult;
 using ::testing::Field;
+using ::testing::Not;
 using ::testing::Pointwise;
 
 using BooksContainer = std::vector<Book>;
@@ -68,6 +70,29 @@ MATCHER(BookEq, "")
         result_listener);
 }
 
+MATCHER_P2(BinaryMatcher, matcher, value, "")
+{
+    const auto& lhs = arg;
+    const auto& rhs = value;
+
+    return ExplainMatchResult(
+        matcher,
+        std::make_pair<decltype(lhs), decltype(rhs)>(lhs, rhs),
+        result_listener);
+}
+
+// This matcher 
+MATCHER(RatedBook2BookEq, "")
+{
+    const RatedBook& rated_book = std::get<0>(arg);
+    const Book& book = std::get<1>(arg);
+    return ExplainMatchResult(
+        AllOf(
+            Field(&RatedBook::m_book, BinaryMatcher(BookEq(), book))),
+        rated_book,
+        result_listener);
+}
+
 TEST_F(MatcherFixture, good_weather)
 {
     // Given
@@ -76,4 +101,34 @@ TEST_F(MatcherFixture, good_weather)
 
     // Then
     EXPECT_THAT(books, Pointwise(BookEq(), books_reference));
+}
+
+TEST_F(MatcherFixture, bad_weather)
+{
+    // Given
+    const BooksContainer books_reference = create_books();
+    BooksContainer books = create_books();
+
+    // When
+    books[0].m_pages[0].m_page_nr = 42;
+
+    // Then
+    EXPECT_THAT(books, Not(Pointwise(BookEq(), books_reference)));
+}
+
+TEST_F(MatcherFixture, compare_apples_and_oranges)
+{
+    // Given
+    const BooksContainer books_reference = create_books();
+    const BooksContainer books = create_books();
+
+    // When
+    std::vector<RatedBook> rated_books;
+    std::transform(std::begin(books), std::end(books), std::back_inserter(rated_books), [n = 0](const Book& book) mutable {
+        return RatedBook(book, ++n);
+    });
+    ASSERT_EQ(books.size(), rated_books.size());
+
+    // Then
+    EXPECT_THAT(rated_books, Pointwise(RatedBook2BookEq(), books_reference));
 }

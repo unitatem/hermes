@@ -37,3 +37,14 @@ std::ostream& operator<<(std::ostream& os, const Book& book)
     os << "}";
     return os;
 }
+
+RatedBook::RatedBook(const Book book, int rating)
+    : m_book(book), m_rating(rating) {}
+
+std::ostream& operator<<(std::ostream& os, const RatedBook& rated_book)
+{
+    os << "RatedBook:{ ";
+    os << "book: " << rated_book.m_book << ", ";
+    os << "rating: " << rated_book.m_rating << ", ";
+    return os;
+}

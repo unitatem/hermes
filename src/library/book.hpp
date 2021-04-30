@@ -21,4 +21,16 @@ public:
     std::vector<Page> m_pages;
 };
 
+class RatedBook
+{
+public:
+    RatedBook(const Book book, int rating);
+
+    // This is not a smart idea but I will use it just for testing purposes
+    const Book m_book;
+    double m_rating;
+
+    friend std::ostream& operator<<(std::ostream& os, const RatedBook& rated_book);
+};
+
 #endif // BOOK_HPP_
