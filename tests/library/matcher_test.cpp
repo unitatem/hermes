@@ -70,7 +70,10 @@ MATCHER(BookEq, "")
         result_listener);
 }
 
-MATCHER_P2(BinaryMatcher, matcher, value, "")
+// Wraps matcher and one of comparison objects in order to compare with incoming `arg`.
+// `arg` is an object feeded by GoogleTest framework. `value` is an object
+// explicitelly specified by a client.
+MATCHER_P2(MatchWith, matcher, value, "")
 {
     const auto& lhs = arg;
     const auto& rhs = value;
@@ -81,14 +84,16 @@ MATCHER_P2(BinaryMatcher, matcher, value, "")
         result_listener);
 }
 
-// This matcher 
+// Match RateBook's object with Book's object.
+// Expects `arg` as a std::tuple where first element is RatedBook
+// and second element is Book.
 MATCHER(RatedBook2BookEq, "")
 {
     const RatedBook& rated_book = std::get<0>(arg);
     const Book& book = std::get<1>(arg);
     return ExplainMatchResult(
         AllOf(
-            Field(&RatedBook::m_book, BinaryMatcher(BookEq(), book))),
+            Field(&RatedBook::m_book, MatchWith(BookEq(), book))),
         rated_book,
         result_listener);
 }

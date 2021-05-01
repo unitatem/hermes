@@ -4,7 +4,7 @@
 Project for exploration of random programming ideas.
 
 # References
-## BEnchmark
+## Benchmark
 - A microbenchmark support library
   https://github.com/google/benchmark
 
@@ -13,6 +13,10 @@ Project for exploration of random programming ideas.
   https://github.com/nektos/act
 
 ## Google Test
+### Docs
+- https://github.com/google/googletest/blob/master/docs/gmock_cheat_sheet.md
+- https://github.com/google/googletest/blob/master/docs/reference/matchers.md
+### Setup
 - https://github.com/abseil/googletest/blob/master/googletest/README.md
 - https://github.com/bast/gtest-demo/blob/master/README.md
 
