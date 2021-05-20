@@ -3,26 +3,23 @@
 
 #include <iostream>
 
-#define __CLASS__ \
-typeid(*this).name()
+#define __CLASS__ typeid(*this).name()
 
-#define LOGGER_MSG_PREFIX \
-std::cout << __CLASS__ << "::" << __func__ << "() > "
+#define LOGGER_MSG_PREFIX std::cout << __CLASS__ << "::" << __func__ << "() > "
 
-#define LOG_START() \
-do { \
+#define LOG_START()                            \
+  do {                                         \
     LOGGER_MSG_PREFIX << "START" << std::endl; \
-} while (false)
+  } while (false)
 
-#define LOG_END() \
-do { \
+#define LOG_END()                            \
+  do {                                       \
     LOGGER_MSG_PREFIX << "END" << std::endl; \
-} while (false)
+  } while (false)
 
-
-#define LOG_MSG(x) \
-do { \
+#define LOG_MSG(x)                         \
+  do {                                     \
     LOGGER_MSG_PREFIX << (x) << std::endl; \
-} while (false)
+  } while (false)
 
-#endif // LOGGER_LOGGER_HPP
+#endif  // LOGGER_LOGGER_HPP

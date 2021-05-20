@@ -3,14 +3,13 @@
 
 #include "gmock/gmock.h"
 
-class PageMock
-{
-public:
-    PageMock();
-    ~PageMock();
+class PageMock {
+ public:
+  PageMock();
+  ~PageMock();
 
-    MOCK_METHOD(void, refresh, ());
-    MOCK_METHOD(int, insert, (void*, void*));
+  MOCK_METHOD(void, refresh, ());
+  MOCK_METHOD(int, insert, (void*, void*));
 };
 
-#endif // PAGE_MOCK_HPP_
+#endif  // PAGE_MOCK_HPP_
