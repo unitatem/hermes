@@ -5,7 +5,7 @@ project(benchmark-download NONE)
 include(ExternalProject)
 ExternalProject_Add(benchmark
         GIT_REPOSITORY https://github.com/google/benchmark.git
-        GIT_TAG master
+        GIT_TAG main
         SOURCE_DIR "@DESTINATION_ROOT@/benchmark-src"
         BINARY_DIR "@DESTINATION_ROOT@/benchmark-build"
         CONFIGURE_COMMAND ""
