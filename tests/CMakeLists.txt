@@ -4,4 +4,4 @@ include(GoogleTest)
 
 add_subdirectory(containers_benchmark)
 add_subdirectory(library)
-add_subdirectory(visitor)
+add_subdirectory(mixed)
