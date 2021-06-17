@@ -59,7 +59,7 @@ struct Building {
   }
 };
 
-TEST(StructCmpTest, good_weather) {
+TEST(StructCmpTest, DISABLED_good_weather) {
   // Given
   const Building a = {"B01", {"A", {0, {1, 2, 3, 4, 5}}}};
   const Building b = {"B01", {"B", {0, {1, 2, 3, 4, 6}}}};
