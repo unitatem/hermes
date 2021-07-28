@@ -15,7 +15,7 @@ add_compile_options(
     -Werror
     -Wshadow
     -Wnon-virtual-dtor
-    -pedantic
+    # -pedantic Disabled because GoogleTest introduces polution
     )
 
 include_directories(include)
