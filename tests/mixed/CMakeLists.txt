@@ -9,12 +9,12 @@ target_link_libraries(lambda_test
     gmock_main)
 gtest_discover_tests(lambda_test)
 
-add_executable(polymorphic_mock_test
-    polymorphic_mock_test.cpp)
-target_link_libraries(polymorphic_mock_test
+add_executable(unique_ptr_mock_test
+unique_ptr_mock_test.cpp)
+target_link_libraries(unique_ptr_mock_test
     gtest
     gmock_main)
-gtest_discover_tests(polymorphic_mock_test)
+gtest_discover_tests(unique_ptr_mock_test)
 
 add_executable(struct_cmp_test
     struct_cmp_test.cpp)
