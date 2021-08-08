@@ -19,9 +19,7 @@ class Processor {
   Processor()
       : thread{[&]() {
           while (!terminate) {
-            auto e = mq.receive();
-            if (!e) continue;
-            (*e)();
+            mq.receive()();
           }
         }} {}
 

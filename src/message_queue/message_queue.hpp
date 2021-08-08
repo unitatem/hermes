@@ -19,8 +19,17 @@ class MessageQueue {
     queue_semaphore.release();
   }
 
-  // Active listener
-  std::optional<T> receive() {
+  T receive() {
+    queue_semaphore.acquire();
+
+    std::scoped_lock<decltype(queue_mutex)> lock(queue_mutex);
+    auto e = queue.front();
+    queue.pop();
+
+    return e;
+  }
+
+  std::optional<T> try_receive() {
     std::chrono::milliseconds duration(100);
     if (!queue_semaphore.try_acquire_for(duration)) {
       return {};

@@ -14,37 +14,51 @@ void check_optional(const T& ref, const std::optional<T>& opt) {
 }
 
 TEST(MessageQueueTest_SingleThread, send_receive) {
+  // Given
   MessageQueue<int> mq;
 
-  // SUT
+  // When
   mq.send(1);
   mq.send(2);
 
-  check_optional(1, mq.receive());
-  check_optional(2, mq.receive());
+  EXPECT_EQ(1, mq.receive());
+  EXPECT_EQ(2, mq.receive());
 }
 
-TEST(MessageQueueTest_SingleThread, send_receive_from_empty_queue) {
+TEST(MessageQueueTest_SingleThread, send_try_receive) {
+  // Given
   MessageQueue<int> mq;
 
-  // SUT
+  // When
+  mq.send(1);
+  mq.send(2);
+
+  check_optional(1, mq.try_receive());
+  check_optional(2, mq.try_receive());
+}
+
+// TEST(MessageQueueTest_SingleThread, send_receive_from_empty_queue)
+// Call to receive() on empty queue will hang
+
+TEST(MessageQueueTest_SingleThread, send_try_receive_from_empty_queue) {
+  // Given
+  MessageQueue<int> mq;
+
+  // When
   mq.send(1);
 
-  check_optional(1, mq.receive());
-  EXPECT_FALSE(mq.receive());
+  check_optional(1, mq.try_receive());
+  EXPECT_FALSE(mq.try_receive());
 }
 
 TEST(MessageQueueTest_MultiThread, send_receive) {
+  // Given
   MessageQueue<int> mq;
 
-  // SUT
+  // When
   std::thread t_r{[&]() {
-    for (int i = 1; i <= 2;) {
-      auto e = mq.receive();
-      if (!e) continue;
-
-      check_optional(i, e);
-      ++i;
+    for (int i = 1; i <= 2; ++i) {
+      EXPECT_EQ(i, mq.receive());
     }
   }};
 
@@ -59,21 +73,21 @@ TEST(MessageQueueTest_MultiThread, send_receive) {
 }
 
 TEST(MessageQueueTest_MultiThread, send_receive_2) {
+  // Given
   constexpr int producers_cnt = 10;
   constexpr int work_per_producer_cnt = 5000;
   constexpr int total_work_cnt = producers_cnt * work_per_producer_cnt;
 
   MessageQueue<int> mq;
-  // SUT
+
+  // When
   std::thread t_r{[&]() {
     std::vector<int> cnt_array(work_per_producer_cnt, 0);
-    for (int i = 0; i < total_work_cnt;) {
+    for (int i = 0; i < total_work_cnt; ++i) {
       auto e = mq.receive();
-      if (!e) continue;
-
-      ++cnt_array[*e];
-      ++i;
+      ++cnt_array[e];
     }
+
     auto it = std::find_if(cnt_array.begin(), cnt_array.end(),
                            [](const int e) { return e != producers_cnt; });
     EXPECT_EQ(it, cnt_array.end()) << "Unexpected amount of work done: " << *it;
@@ -87,7 +101,6 @@ TEST(MessageQueueTest_MultiThread, send_receive_2) {
 
   std::vector<std::thread> threads;
   for (int i = 0; i < producers_cnt; ++i) {
-    // std::thread t_s1{worker};
     threads.emplace_back(worker);
   }
 
