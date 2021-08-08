@@ -15,3 +15,10 @@ target_link_libraries(processor_test
     gtest
     gmock_main)
 gtest_discover_tests(processor_test)
+
+add_executable(stage_test
+    stage_test.cpp)
+target_link_libraries(stage_test
+    gtest
+    gmock_main)
+gtest_discover_tests(stage_test)
