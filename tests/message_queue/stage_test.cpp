@@ -9,19 +9,21 @@
 #include "gtest/gtest.h"
 
 TEST(StageTest, format_string) {
+  // Given
   std::stringstream ss;
+  using StringEditor = Stage<std::string>;
 
   // When
   {
-    Stage print{[&](std::string str) { ss << str; }};
+    StringEditor print{[&](std::string str) { ss << str; }};
 
-    Stage to_lower{[&](std::string str) {
+    StringEditor to_lower{[&](std::string str) {
       std::string tmp;
       for (const auto& c : str) tmp += std::tolower(c);
       print.process(tmp);
     }};
 
-    Stage remove_white_space{[&](std::string str) {
+    StringEditor remove_white_space{[&](std::string str) {
       std::string tmp;
       for (const auto& c : str) {
         if (c == ' ') continue;

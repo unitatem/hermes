@@ -20,6 +20,10 @@ Project for exploration of random programming ideas.
 - https://github.com/abseil/googletest/blob/master/googletest/README.md
 - https://github.com/bast/gtest-demo/blob/master/README.md
 
+## Message queue and multithread processing
+- CppCon 2018: Herb Sutter “Thoughts on a more powerful and simpler C++ (5 of N)”
+  https://www.youtube.com/watch?v=80BZxujhY38
+
 ## Visual Studio Code
 - Tasks
   https://code.visualstudio.com/docs/editor/tasks

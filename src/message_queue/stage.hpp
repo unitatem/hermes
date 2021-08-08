@@ -5,18 +5,23 @@
 
 #include "processor.hpp"
 
+// Single processing note.
+// Type of processing is defined as a ctor argument.
+template <typename T>
 class Stage {
  public:
-  using Work = std::function<void(std::string str)>;
+  using WorkDefinition = std::function<void(T)>;
 
  private:
-  Work work;
+  WorkDefinition work;
   Processor processor;
 
  public:
-  Stage(Work w) : work{w} {}
+  // Define type of processing executed by this object.
+  Stage(WorkDefinition w) : work{w} {}
 
-  void process(std::string str) {
+  // Accepts input data to process.
+  void process(T str) {
     processor.send([=]() { work(str); });
   }
 };

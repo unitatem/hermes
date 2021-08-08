@@ -12,16 +12,18 @@ class Semaphore {
   int count;
 
  public:
-  Semaphore(int cnt) : count(cnt) {}
+  Semaphore(int cnt) : count{cnt} {}
 
+  // Increase semaphore count.
   void release() {
-    std::scoped_lock<decltype(mutex)> lock(mutex);
+    std::scoped_lock<decltype(mutex)> lock{mutex};
     ++count;
     condition.notify_one();
   }
 
+  // Decrease semaphore count.
   void acquire() {
-    std::unique_lock<decltype(mutex)> lock(mutex);
+    std::unique_lock<decltype(mutex)> lock{mutex};
     while (!count) {
       condition.wait(lock);
     }
@@ -29,7 +31,7 @@ class Semaphore {
   }
 
   bool try_acquire_for(std::chrono::milliseconds ms) {
-    std::unique_lock<decltype(mutex)> lock(mutex);
+    std::unique_lock<decltype(mutex)> lock{mutex};
     if (!count) {
       if (condition.wait_for(lock, ms) == std::cv_status::timeout) {
         return false;

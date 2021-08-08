@@ -7,22 +7,25 @@
 
 #include "semaphore.hpp"
 
+// Thread safe queue without max element limit.
 template <typename T>
 class MessageQueue {
  public:
-  MessageQueue() : queue_semaphore(0) {}
+  MessageQueue() : queue_semaphore{0} {}
 
+  // Add object to the queue.
   void send(T msg) {
-    std::scoped_lock<decltype(queue_mutex)> lock(queue_mutex);
+    std::scoped_lock<decltype(queue_mutex)> lock{queue_mutex};
     queue.push(msg);
 
     queue_semaphore.release();
   }
 
+  // Retrieve object from the queue.
   T receive() {
     queue_semaphore.acquire();
 
-    std::scoped_lock<decltype(queue_mutex)> lock(queue_mutex);
+    std::scoped_lock<decltype(queue_mutex)> lock{queue_mutex};
     auto e = queue.front();
     queue.pop();
 
@@ -30,12 +33,12 @@ class MessageQueue {
   }
 
   std::optional<T> try_receive() {
-    std::chrono::milliseconds duration(100);
+    std::chrono::milliseconds duration{100};
     if (!queue_semaphore.try_acquire_for(duration)) {
       return {};
     }
 
-    std::scoped_lock<decltype(queue_mutex)> lock(queue_mutex);
+    std::scoped_lock<decltype(queue_mutex)> lock{queue_mutex};
     auto e = queue.front();
     queue.pop();
 
