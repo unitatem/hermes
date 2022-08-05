@@ -1,5 +1,13 @@
+# Old build
 bin/*
 build/*
+
+# Bazel
+bazel-bin
+bazel-out
+bazel-src
+bazel-testlogs
+
 
 # CLion
 .idea
@@ -11,4 +19,3 @@ cmake-build-debug
 !.vscode/tasks.json
 
 core
-
