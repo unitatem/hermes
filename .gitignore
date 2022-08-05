@@ -5,7 +5,7 @@ build/*
 # Bazel
 bazel-bin
 bazel-out
-bazel-src
+bazel-hermes
 bazel-testlogs
 
 
