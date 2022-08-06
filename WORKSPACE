@@ -5,3 +5,9 @@ git_repository(
     branch = "main",
     remote = "https://github.com/google/googletest.git",
 )
+
+git_repository(
+    name = "google_benchmark",
+    branch = "main",
+    remote = "https://github.com/google/benchmark.git",
+)
