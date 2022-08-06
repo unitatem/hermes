@@ -10,6 +10,7 @@ cc_library(
         "book.cpp",
         "book.hpp",
     ],
+    visibility = [":__subpackages__"],
     deps = [":page"],
 )
 
@@ -17,6 +18,7 @@ cc_library(
     name = "page",
     srcs = [
         "page.cpp",
-        "page.hpp",
     ],
+    hdrs = ["page.hpp"],
+    visibility = [":__subpackages__"],
 )
