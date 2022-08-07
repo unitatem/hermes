@@ -1,4 +1,4 @@
-#include "../../src/message_queue/message_queue.hpp"
+#include "src/message_queue/message_queue.hpp"
 
 #include <algorithm>
 #include <iostream>
