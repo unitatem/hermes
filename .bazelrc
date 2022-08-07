@@ -1,1 +1,11 @@
-build --action_env=BAZEL_CXXOPTS="-std=c++2a"
+build --cxxopt="-std=c++2a"
+
+build --cxxopt="-Wextra"
+build --cxxopt="-Werror"
+build --cxxopt="-Wshadow"
+build --cxxopt="-Wnon-virtual-dtor"
+build --cxxopt="-pedantic"
+
+build --linkopt="-fsanitize=address"
+
+build:Debug --compilation_mode=dbg
