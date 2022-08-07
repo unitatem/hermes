@@ -1,9 +1,10 @@
 #!/bin/bash
 
-targets="all"
+targets="//..."
 
 if [ ! -z "$@" ]; then
   targets="$@"
 fi
 
-mkdir -p build && cmake . -B./build && cmake --build build --target "$targets"
+bazel build "$targets"
+
