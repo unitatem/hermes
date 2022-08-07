@@ -22,7 +22,7 @@ class Stage {
 
   // Accepts input data to process.
   void process(T str) {
-    processor.send([=]() { work(str); });
+    processor.send([this, str]() { work(str); });
   }
 };
 
