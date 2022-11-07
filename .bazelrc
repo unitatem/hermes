@@ -2,7 +2,8 @@ build --cxxopt="-std=c++2a"
 
 build --cxxopt="-Wextra"
 build --cxxopt="-Werror"
-build --cxxopt="-Wshadow"
+build --cxxopt="-Wno-unused-parameter" # Added because of protobuf compilation
+# build --cxxopt="-Wshadow"  # Disabled becuase protobuf doesn't compile with it
 build --cxxopt="-Wnon-virtual-dtor"
 build --cxxopt="-pedantic"
 

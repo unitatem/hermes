@@ -1,0 +1,13 @@
+cc_library(
+    name = "person",
+    srcs = [
+        "person.pb.cc",
+    ],
+    hdrs = [
+        "person.pb.h",
+    ],
+    visibility = [":__subpackages__"],
+    deps = [
+        "@com_google_protobuf//:protobuf",
+    ],
+)

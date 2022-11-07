@@ -1,4 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 git_repository(
     name = "com_google_googletest",
@@ -13,3 +14,14 @@ git_repository(
     remote = "https://github.com/google/benchmark.git",
     shallow_since = "1667214239 +0000",
 )
+
+http_archive(
+    name = "com_google_protobuf",
+    sha256 = "1add10f9bd92775b91f326da259f243881e904dd509367d5031d4c782ba82810",
+    strip_prefix = "protobuf-3.21.9",
+    urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.21.9.tar.gz"],
+)
+
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+
+protobuf_deps()
