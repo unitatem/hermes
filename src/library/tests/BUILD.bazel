@@ -4,8 +4,8 @@ cc_test(
     deps = [
         "//src/library:book",
         "//src/library/tests:page_mock",
-        "@googletest//:gtest",
-        "@googletest//:gtest_main",
+        "@com_google_googletest//:gtest",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -14,8 +14,8 @@ cc_test(
     srcs = ["matcher_test.cpp"],
     deps = [
         "//src/library:book",
-        "@googletest//:gtest",
-        "@googletest//:gtest_main",
+        "@com_google_googletest//:gtest",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -27,7 +27,7 @@ cc_library(
     hdrs = ["page_mock.hpp"],
     deps = [
         "//src/library:page",
-        "@googletest//:gtest",
+        "@com_google_googletest//:gtest",
     ],
 )
 
@@ -38,6 +38,6 @@ cc_library(
     ],
     deps = [
         "//src/library:page",
-        "@googletest//:gtest",
+        "@com_google_googletest//:gtest",
     ],
 )
