@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "../person.pb.h"
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
+#include "src/protobuf/person.pb.h"
 
 TEST(CodecTest, encode_decode) {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
