@@ -1,0 +1,9 @@
+cc_binary(
+    name = "lookup",
+    srcs = [
+        "lookup.cpp",
+    ],
+    deps = [
+        "@com_google_benchmark//:benchmark_main",
+    ],
+)

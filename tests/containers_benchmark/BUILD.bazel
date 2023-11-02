@@ -1,7 +1,0 @@
-cc_test(
-    name = "vector_benchmark",
-    srcs = ["vector.cpp"],
-    deps = [
-        "@com_google_benchmark//:benchmark_main",
-    ],
-)
