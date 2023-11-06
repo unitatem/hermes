@@ -1,4 +1,4 @@
-#include "src/message_queue/stage.hpp"
+#include "lab/message_queue/stage.hpp"
 
 #include <cctype>
 #include <iostream>

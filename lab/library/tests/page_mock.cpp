@@ -1,6 +1,6 @@
 #include "page_mock.hpp"
 
-#include "src/library/page.hpp"
+#include "lab/library/page.hpp"
 
 static PageMock *mock_impl = nullptr;
 
