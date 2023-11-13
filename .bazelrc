@@ -11,3 +11,5 @@ build --linkopt="-fsanitize=address"
 
 build:Debug --compilation_mode=dbg
 build:Release -c opt --cxxopt=-O3
+
+test --test_output=errors
