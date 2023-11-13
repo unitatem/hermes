@@ -1,10 +1,7 @@
-#include <filesystem>
 #include <fstream>
 #include <string>
 
 #include "gtest/gtest.h"
-
-namespace fs = std::filesystem;
 
 TEST(DataFileTest, loadFile) {
   const std::string myPath{"lab/data_file/resources/config.txt"};
