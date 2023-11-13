@@ -4,6 +4,9 @@
 Project for exploration of random programming ideas.
 
 # References
+## Clangd compile commands
+- https://github.com/hedronvision/bazel-compile-commands-extractor
+
 ## Benchmark
 - A microbenchmark support library
   https://github.com/google/benchmark
