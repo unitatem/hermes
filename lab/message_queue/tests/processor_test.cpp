@@ -7,16 +7,16 @@
 #include "gtest/gtest.h"
 
 TEST(ProcessorTest, single_thread_processing) {
-  std::stringstream ss;
+    std::stringstream ss;
 
-  // SUT
-  {
-    Processor proc;
-    proc.send([&]() { ss << "M1 "; });
-    proc.send([&]() { ss << "M2 "; });
-    proc.send([&]() { ss << "M3 "; });
-    proc.send([&]() { ss << "M4 "; });
-  }
+    // SUT
+    {
+        Processor proc;
+        proc.send([&]() { ss << "M1 "; });
+        proc.send([&]() { ss << "M2 "; });
+        proc.send([&]() { ss << "M3 "; });
+        proc.send([&]() { ss << "M4 "; });
+    }
 
-  EXPECT_EQ("M1 M2 M3 M4 ", ss.str());
+    EXPECT_EQ("M1 M2 M3 M4 ", ss.str());
 }

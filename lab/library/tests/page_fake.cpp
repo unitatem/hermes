@@ -3,5 +3,5 @@
 #include "lab/library/page.hpp"
 
 void Page::refresh() {
-  std::cout << "(interceptor) Page::refresh()" << std::endl;
+    std::cout << "(interceptor) Page::refresh()" << std::endl;
 }
