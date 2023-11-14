@@ -1,13 +1,12 @@
-# Old build
-bin/*
-build/*
+# Python
+.venv/
+__pycache__/
 
 # Bazel
 bazel-bin
 bazel-out
 bazel-hermes
 bazel-testlogs
-
 
 # CLion
 .idea

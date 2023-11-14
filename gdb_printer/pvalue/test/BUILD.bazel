@@ -1,0 +1,19 @@
+cc_binary(
+    name = "types",
+    srcs = [
+        "types.cpp",
+    ],
+)
+
+sh_test(
+    name = "test",
+    srcs = [
+        "test.sh",
+    ],
+    data = [
+        "scenario.py",
+        ":types",
+        "//gdb_printer/pvalue",
+    ],
+    tags = ["manual"],
+)
