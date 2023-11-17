@@ -1,3 +1,5 @@
+#include <optional>
+
 struct Foo {
     int a;
 };
@@ -6,6 +8,9 @@ struct Bar {
     Foo b;
 };
 
-[[maybe_unused]] static Bar theBar{Foo{2}};
+Bar theBar{Foo{2}};
+
+std::optional<int> theOptionalNotSet{};
+std::optional<int> theOptionalSetTo10{10};
 
 int main() {}

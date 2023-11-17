@@ -6,9 +6,9 @@ def test(variable, expected_output):
     output = gdb.execute('print ' + variable, to_string=True)
     print(f"Output: {output}")
 
-    search = re.search('{.*}', output)
+    search = re.search(' = (.*)', output)
     if search:
-        output = search.group(0)
+        output = search.group(1)
 
     if not expected_output == output:
         print(f"For {variable} variable: expected: {expected_output}, actual: {output}")
@@ -19,5 +19,8 @@ gdb.execute('source gdb_printer/pvalue/pvalue.py')
 gdb.execute('file gdb_printer/pvalue/test/types')
 
 test("theBar", "{b = Foo}")
+
+test("theOptionalNotSet", "std::nullopt")
+test("theOptionalSetTo10", "10")
 
 gdb.execute('quit')
