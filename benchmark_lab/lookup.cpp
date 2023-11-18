@@ -30,26 +30,12 @@ BENCHMARK_TEMPLATE(benchmarkMapLookUp, std::unordered_map<int, int>)
 BENCHMARK_TEMPLATE(benchmarkMapLookUp, std::map<int, int>)
     ->Range(1, RangeUpperLimit);
 
-static void benchmarkVectorLookUp(benchmark::State& aState) {
-    const auto mySize = aState.range(0);
+enum class UseSafeLookUp {
+    No,
+    Yes,
+};
 
-    std::vector<int> myContainer;
-    for (int myI = 0; myI < mySize; ++myI) {
-        myContainer.emplace_back(myI);
-    }
-
-    auto myIdx = 0;
-    for (auto _ : aState) {
-        const auto myValue = myContainer[myIdx];
-        benchmark::DoNotOptimize(myValue);
-
-        ++myIdx;
-        myIdx %= mySize;
-    }
-}
-
-BENCHMARK(benchmarkVectorLookUp)->Range(1, RangeUpperLimit);
-
+template <UseSafeLookUp UseSafeLookUpV>
 static void benchmarkVectorSafeLookUp(benchmark::State& aState) {
     const auto mySize = aState.range(0);
 
@@ -60,12 +46,20 @@ static void benchmarkVectorSafeLookUp(benchmark::State& aState) {
 
     auto myIdx = 0;
     for (auto _ : aState) {
-        const auto myValue = myContainer.at(myIdx);
-        benchmark::DoNotOptimize(myValue);
+        if constexpr (UseSafeLookUpV == UseSafeLookUp::Yes) {
+            const auto myValue = myContainer.at(myIdx);
+            benchmark::DoNotOptimize(myValue);
+        } else {
+            const auto myValue = myContainer[myIdx];
+            benchmark::DoNotOptimize(myValue);
+        }
 
         ++myIdx;
         myIdx %= mySize;
     }
 }
 
-BENCHMARK(benchmarkVectorSafeLookUp)->Range(1, RangeUpperLimit);
+BENCHMARK_TEMPLATE(benchmarkVectorSafeLookUp, UseSafeLookUp::Yes)
+    ->Range(1, RangeUpperLimit);
+BENCHMARK_TEMPLATE(benchmarkVectorSafeLookUp, UseSafeLookUp::No)
+    ->Range(1, RangeUpperLimit);
