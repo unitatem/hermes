@@ -1,4 +1,5 @@
 #include "benchmark/benchmark.h"
+#include "benchmark_lab/abseil_container_wrapper.hpp"
 #include "benchmark_lab/std_container_wrapper.hpp"
 
 static_assert(sizeof(char) == 1);
@@ -37,6 +38,8 @@ struct Payload {
     std::array<char, N> thePayload;
 };
 
+BENCHMARK_TEMPLATE(benchmarkLookUp, AbseilFlatHashMapWrapper<int, Payload<64>>)
+    ->Range(1, RangeUpperLimit);
 BENCHMARK_TEMPLATE(benchmarkLookUp, StdUnorderedMapWrapper<int, Payload<64>>)
     ->Range(1, RangeUpperLimit);
 BENCHMARK_TEMPLATE(benchmarkLookUp, StdMapWrapper<int, Payload<64>>)
@@ -53,25 +56,30 @@ BENCHMARK_TEMPLATE(benchmarkLookUp,
 --------------------------------------------------------------------------------------------------------------------
 Benchmark                                                                          Time             CPU   Iterations
 --------------------------------------------------------------------------------------------------------------------
-benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/1                     15.6 ns         15.6 ns     44645790
-benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/8                     15.1 ns         15.1 ns     46126832
-benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/64                    14.9 ns         14.9 ns     46487705
-benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/512                   14.9 ns         14.9 ns     45804075
-benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/4096                  14.9 ns         14.9 ns     46397081
-benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/1                              12.6 ns         12.6 ns     54907163
-benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/8                              12.6 ns         12.6 ns     54335762
-benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/64                             12.9 ns         12.9 ns     53006839
-benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/512                            14.6 ns         14.6 ns     45834606
-benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/4096                           58.5 ns         58.5 ns     11559119
-benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/1             12.6 ns         12.6 ns     54425240
-benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/8             12.8 ns         12.8 ns     54534693
-benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/64            12.6 ns         12.6 ns     53756608
-benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/512           12.6 ns         12.6 ns     53663340
-benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/4096          12.6 ns         12.6 ns     54274659
-benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/1          12.7 ns         12.7 ns     53059323
-benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/8          12.6 ns         12.6 ns     54333651
-benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/64         12.7 ns         12.7 ns     54062834
-benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/512        12.8 ns         12.8 ns     54226263
-benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/4096       12.8 ns         12.8 ns     53765353
+benchmarkLookUp<AbseilFlatHashMapWrapper<int, Payload<64>>>/1                   16.5 ns         16.5 ns     45876207
+benchmarkLookUp<AbseilFlatHashMapWrapper<int, Payload<64>>>/8                   16.6 ns         16.6 ns     42288061
+benchmarkLookUp<AbseilFlatHashMapWrapper<int, Payload<64>>>/64                  16.6 ns         16.6 ns     41861715
+benchmarkLookUp<AbseilFlatHashMapWrapper<int, Payload<64>>>/512                 16.6 ns         16.6 ns     41989001
+benchmarkLookUp<AbseilFlatHashMapWrapper<int, Payload<64>>>/4096                17.0 ns         17.0 ns     40904262
+benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/1                     17.4 ns         17.4 ns     40142163
+benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/8                     17.6 ns         17.6 ns     39899163
+benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/64                    17.5 ns         17.5 ns     39731640
+benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/512                   17.5 ns         17.5 ns     39695225
+benchmarkLookUp<StdUnorderedMapWrapper<int, Payload<64>>>/4096                  17.5 ns         17.5 ns     39794334
+benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/1                              14.1 ns         14.1 ns     49337294
+benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/8                              14.9 ns         14.9 ns     47858455
+benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/64                             17.7 ns         17.7 ns     39389429
+benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/512                            37.9 ns         37.9 ns     18436849
+benchmarkLookUp<StdMapWrapper<int, Payload<64>>>/4096                           69.4 ns         69.2 ns     10011351
+benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/1             14.1 ns         14.1 ns     48884385
+benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/8             14.1 ns         14.1 ns     49355763
+benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/64            14.0 ns         14.0 ns     49553183
+benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/512           14.0 ns         14.0 ns     49194140
+benchmarkLookUp<StdVectorWithSafeAccessWrapper<int, Payload<64>>>/4096          14.2 ns         14.2 ns     49645150
+benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/1          13.9 ns         13.9 ns     49941885
+benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/8          13.8 ns         13.8 ns     50142951
+benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/64         13.9 ns         13.9 ns     50083636
+benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/512        13.8 ns         13.8 ns     50168345
+benchmarkLookUp<StdVectorWithoutSafeAccessWrapper<int, Payload<64>>>/4096       13.8 ns         13.8 ns     50525247
 */
 // clang-format on
