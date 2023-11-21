@@ -1,4 +1,4 @@
-#include "lab/message_queue/message_queue.hpp"
+#include "example/message_queue/message_queue.hpp"
 
 #include <algorithm>
 #include <iostream>

@@ -1,4 +1,4 @@
-#include "lab/message_queue/processor.hpp"
+#include "example/message_queue/processor.hpp"
 
 #include <iostream>
 #include <sstream>

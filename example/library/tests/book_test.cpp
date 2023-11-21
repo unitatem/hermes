@@ -1,4 +1,4 @@
-#include "lab/library/book.hpp"
+#include "example/library/book.hpp"
 
 #include <iostream>
 

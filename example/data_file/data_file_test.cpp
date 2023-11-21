@@ -4,7 +4,7 @@
 #include "gtest/gtest.h"
 
 TEST(DataFileTest, loadFile) {
-    const std::string myPath{"lab/data_file/resources/config.txt"};
+    const std::string myPath{"example/data_file/resources/config.txt"};
     // Read-only mode is necessary when running under bazel sandbox
     std::ifstream myFile{myPath};
 

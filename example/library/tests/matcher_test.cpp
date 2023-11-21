@@ -3,9 +3,9 @@
 #include <utility>
 #include <vector>
 
+#include "example/library/book.hpp"
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
-#include "lab/library/book.hpp"
 
 using ::testing::AllOf;
 using ::testing::ContainerEq;
