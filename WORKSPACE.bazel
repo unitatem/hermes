@@ -1,6 +1,7 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
+# Compile commands for clangd server
 http_archive(
     name = "hedron_compile_commands",
     sha256 = "085bde6c5212c8c1603595341ffe7133108034808d8c819f8978b2b303afc9e7",
@@ -14,6 +15,7 @@ load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_
 
 hedron_compile_commands_setup()
 
+# Google Googletest
 git_repository(
     name = "com_google_googletest",
     commit = "58d77fa8070e8cec2dc1ed015d66b454c8d78850",
@@ -21,6 +23,7 @@ git_repository(
     shallow_since = "1656350095 -0400",
 )
 
+# Google Benchmark
 git_repository(
     name = "com_google_benchmark",
     commit = "398a8ac2e8e0b852fa1568dc1c8ebdfc743a380a",
@@ -28,6 +31,18 @@ git_repository(
     shallow_since = "1667214239 +0000",
 )
 
+# Google Abseil
+git_repository(
+    name = "com_google_absl",
+    commit = "db5c79932e16e97e8b2f9ecd0e74f99f0e74e0d7",
+    remote = "https://github.com/abseil/abseil-cpp.git",
+    repo_mapping = {
+        "@com_github_google_benchmark": "@com_google_benchmark",
+    },
+    shallow_since = "1700521129 -0800",
+)
+
+# Google Protobuf
 http_archive(
     name = "com_google_protobuf",
     sha256 = "1add10f9bd92775b91f326da259f243881e904dd509367d5031d4c782ba82810",
