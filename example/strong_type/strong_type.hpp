@@ -2,15 +2,26 @@
 
 #include <utility>
 
-template <typename T>
-class StrongType {
+namespace details {
+template <typename ValueT, typename TagT>
+class StrongTypeBase {
 public:
-    using value_type = T;
+    using value_type = ValueT;
 
-    constexpr StrongType(T aData) : theData{std::forward<T>(aData)} {}
+    constexpr StrongTypeBase(ValueT aData)
+        : theData{std::forward<ValueT>(aData)} {}
 
-    constexpr T value() const { return theData; }
+    constexpr ValueT value() const { return theData; }
 
 private:
-    T theData;
+    ValueT theData;
+};
+}  // namespace details
+
+template <typename ValueT, typename TagT,
+          template <typename> typename... PropertiesT>
+struct StrongTypeFactory
+    : public details::StrongTypeBase<ValueT, TagT>,
+      public PropertiesT<StrongTypeFactory<ValueT, TagT, PropertiesT...>>... {
+    using details::StrongTypeBase<ValueT, TagT>::StrongTypeBase;
 };
