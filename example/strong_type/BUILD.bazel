@@ -1,0 +1,9 @@
+cc_library(
+    name = "strong_type",
+    hdrs = [
+        "addable.hpp",
+        "orderable.hpp",
+        "strong_type.hpp",
+    ],
+    visibility = [":__subpackages__"],
+)
