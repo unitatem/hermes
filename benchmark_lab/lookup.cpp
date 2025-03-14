@@ -18,7 +18,8 @@ static void benchmarkLookUp(benchmark::State& aState) {
     int myIdx = 0;
     for (auto _ : aState) {
         const auto& myIt = myContainer.lookup(myIdx);
-        benchmark::DoNotOptimize(myIt.thePayload[30]);
+        typename ContainerT::value_type myValue = myIt.thePayload[30];
+        benchmark::DoNotOptimize(myValue);
 
         ++myIdx;
         myIdx %= mySize;

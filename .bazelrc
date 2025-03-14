@@ -1,8 +1,9 @@
 build --cxxopt="-std=c++2a"
 
-build --cxxopt="-Wextra"
-build --cxxopt="-Werror"
-build --cxxopt="-Wno-unused-parameter" # Added because of protobuf compilation
+# FIXME
+# build --cxxopt="-Wextra"
+# build --cxxopt="-Werror"
+# build --cxxopt="-Wno-unused-parameter" # Added because of protobuf compilation
 # build --cxxopt="-Wshadow"  # Disabled because of protobuf compilation
 # build --cxxopt="-Wnon-virtual-dtor" # Disabled because of Abseli compilation
 # build --cxxopt="-pedantic" # Disabled because of protobuf compilation
