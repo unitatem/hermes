@@ -1,8 +1,10 @@
 load("//bazel:cc_rules.bzl", "hermes_cc_binary")
 
-# FIXME Use hermes_cc_binary
-cc_binary(
+hermes_cc_binary(
     name = "hello_world",
     srcs = ["hello_world.cpp"],
+    cxxopts = [
+        "-Wno-pedantic",
+    ],
     deps = ["@com_google_absl//absl/strings"],
 )

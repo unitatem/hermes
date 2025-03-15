@@ -1,12 +1,15 @@
 load("//bazel:cc_rules.bzl", "hermes_cc_binary")
 
-# FIXME Use hermes_cc_binary
-cc_binary(
+hermes_cc_binary(
     name = "lookup",
     srcs = [
         "abseil_container_wrapper.hpp",
         "lookup.cpp",
         "std_container_wrapper.hpp",
+    ],
+    cxxopts = [
+        "-Wno-pedantic",
+        "-Wno-unused-parameter",
     ],
     deps = [
         "@com_google_absl//absl/container:flat_hash_map",
