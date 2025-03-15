@@ -1,4 +1,6 @@
-cc_test(
+load("//bazel:cc_rules.bzl", "hermes_cc_test")
+
+hermes_cc_test(
     name = "data_file_test",
     srcs = [
         "data_file_test.cpp",

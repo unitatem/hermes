@@ -1,4 +1,6 @@
-cc_test(
+load("//bazel:cc_rules.bzl", "hermes_cc_test")
+
+hermes_cc_test(
     name = "strong_type_test",
     srcs = ["strong_type_test.cpp"],
     deps = [

@@ -2,9 +2,15 @@
 This is the MODULE.bazel file for the 'hermes' module.
 """
 
+# Project
 module(name = "unitatem-hermes")
 
-bazel_dep(name = "rules_cc", version = "0.1.1")  # Needed for C++ rules
+# Dependencies
+
+bazel_dep(
+    name = "rules_cc",
+    version = "0.1.1",
+)
 
 bazel_dep(
     name = "googletest",

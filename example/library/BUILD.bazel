@@ -1,10 +1,13 @@
-cc_binary(
+load("//bazel:cc_rules.bzl", "hermes_cc_library")
+load("//bazel:cc_rules.bzl", "hermes_cc_binary")
+
+hermes_cc_binary(
     name = "library",
     srcs = ["main.cpp"],
     deps = [":book"],
 )
 
-cc_library(
+hermes_cc_library(
     name = "book",
     srcs = [
         "book.cpp",
@@ -14,7 +17,7 @@ cc_library(
     deps = [":page"],
 )
 
-cc_library(
+hermes_cc_library(
     name = "page",
     srcs = [
         "page.cpp",

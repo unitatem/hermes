@@ -1,4 +1,6 @@
-cc_library(
+load("//bazel:cc_rules.bzl", "hermes_cc_library")
+
+hermes_cc_library(
     name = "message_queue",
     hdrs = [
         "message_queue.hpp",

@@ -1,4 +1,6 @@
-cc_binary(
+load("//bazel:cc_rules.bzl", "hermes_cc_binary")
+
+hermes_cc_binary(
     name = "types",
     srcs = [
         "types.cpp",
