@@ -8,7 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: build
-        run: tools/build.sh
-      - name: test
-        run: tools/test_all.sh
+      - run: tools/build.sh
+      - run: tools/test_all.sh
